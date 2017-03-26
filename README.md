@@ -4,7 +4,7 @@
 
 Inset shadows for HTML's `<canvas>` element.
 
-Currently supports inset shadows on shapes draw with `fillRect`, or shapes draw using the path functions (`beginPath`, `moveTo`, `lineTo`, `arc`, `arcTo`, etc.), along with `fill`.
+Currently supports inset shadows on shapes draw with `fillRect`, or shapes draw using the path functions (`beginPath`, `moveTo`, `lineTo`, `arc`, `arcTo`, etc.) and then `fill`.
 
 ## Usage
 
