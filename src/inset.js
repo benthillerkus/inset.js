@@ -1,68 +1,75 @@
 /* eslint-env browser */
-var c = document.createElement('canvas')
-var ctx = c.getContext('2d')
+;(function () {
+  var c = document.createElement('canvas')
+  var ctx = c.getContext('2d')
 
-// Needed for the drawing of the insets.
-var fillRect = CanvasRenderingContext2D.prototype.fillRect
+  // Needed for the drawing of the insets.
+  var fillRect = CanvasRenderingContext2D.prototype.fillRect
 
-var replacements = ['fillRect']
+  var replacements = ['fillRect']
 
-// Override the "fillRect" method.
-function override (object, methodName, callback) {
-  var original = object[methodName]
-  object[methodName] = function () {
-    if (this.shadowInset === true) {
-      callback(this, original, arguments)
-    } else {
-      original.apply(this, arguments)
+  // Override the "fillRect" method.
+  function override (object, methodName, callback) {
+    var original = object[methodName]
+    object[methodName] = function () {
+      if (this.shadowInset === true) {
+        callback(this, original, arguments)
+      } else {
+        original.apply(this, arguments)
+      }
     }
   }
-}
 
-for (var i = 0; i < replacements.length; i++) {
-  var replacement = replacements[i]
-  override(
-    CanvasRenderingContext2D.prototype,
-    replacement,
-    function (otherCtx, original, args) {
-      var canvas = otherCtx.canvas
-      c.width = canvas.width
-      c.height = canvas.height
+  for (var i = 0; i < replacements.length; i++) {
+    var replacement = replacements[i]
+    override(
+      CanvasRenderingContext2D.prototype,
+      replacement,
+      function (otherCtx, original, args) {
+        var canvas = otherCtx.canvas
 
-      // Draw image.
-      original.apply(ctx, args)
+        // Need buffer to make sure that shapes draw rihgt on the edge still have shadow.
+        var buffer = Math.max(canvas.width, canvas.height)
+        c.width = canvas.width + (2 * buffer)
+        c.height = canvas.height + (2 * buffer)
 
-      // Invert alpha channel.
-      ctx.globalCompositeOperation = 'xor'
-      ctx.fillStyle = 'black'
-      fillRect.apply(ctx, [0, 0, c.width, c.height])
+        ctx.translate(buffer, buffer)
 
-      // Draw itself again using drop-shadow filter.
-      swapShadows(ctx, otherCtx)
-      ctx.drawImage(c, 0, 0)
+        // Draw image.
+        original.apply(ctx, args)
 
-      // Draw shadow onto original canvas.
-      original.apply(otherCtx, args)
+        // Invert alpha channel.
+        ctx.globalCompositeOperation = 'xor'
+        ctx.fillStyle = 'black'
+        fillRect.apply(ctx, [-buffer, -buffer, c.width, c.height])
 
-      // Draw the actual thing we were drawing.
-      otherCtx.drawImage(c, 0, 0)
+        // Draw itself again using drop-shadow filter, cutting off buffer.
+        swapShadows(ctx, otherCtx)
+        ctx.drawImage(c, -buffer, -buffer)
 
-      swapShadows(ctx, otherCtx)
-    }
-  )
-}
+        // Draw shadow onto original canvas.
+        original.apply(otherCtx, args)
 
-function swapShadows (ctx1, ctx2) {
-  var shadowProps = [
-    'shadowBlur',
-    'shadowOffsetX',
-    'shadowOffsetY',
-    'shadowColor'
-  ]
-  for (var i = 0; i < shadowProps.length; i++) {
-    var s = shadowProps[i]
-    var s1 = ctx1[s]
-    ctx1[s] = ctx2[s]
-    ctx2[s] = s1
+        // Draw the actual thing we were drawing.
+        otherCtx.drawImage(c, buffer, buffer, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height)
+
+        swapShadows(ctx, otherCtx)
+      }
+    )
   }
-}
+
+  function swapShadows (ctx1, ctx2) {
+    var shadowProps = [
+      'shadowBlur',
+      'shadowOffsetX',
+      'shadowOffsetY',
+      'shadowColor'
+    ]
+    for (var i = 0; i < shadowProps.length; i++) {
+      var s = shadowProps[i]
+      var s1 = ctx1[s]
+      ctx1[s] = ctx2[s]
+      ctx2[s] = s1
+    }
+  }
+})()
