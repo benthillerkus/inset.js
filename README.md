@@ -4,6 +4,8 @@
 
 Inset shadows for HTML's `<canvas>` element.
 
+Currently supports inset shadows on shapes draw with `fillRect`, or shapes draw using the path functions (`beginPath`, `moveTo`, `lineTo`, `arc`, `arcTo`, etc.), along with `fill`.
+
 ## Usage
 
 Simply set 
@@ -25,10 +27,6 @@ ctx.shadowColor = 'black';
 ctx.fillStyle = 'red';
 ctx.fillRect(0, 0, c.width, c.height);
 ```
-
-## Caveat
-
-Currently, only `fillRect` is supported. Support for other methods on `CanvasRenderingContext2D` is planned, and coming soon. Stay tuned!
 
 ## Example
 
