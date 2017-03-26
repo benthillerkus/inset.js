@@ -1,37 +1,28 @@
 {
-  "name":        "inset.js",
+  "name": "inset.js",
   "description": "Inset shadows for HTML's <canvas> element.",
-
-  "main":        "dist/inset.js",
-  "module":      "dist/inset.module.js",
+  "main": "dist/inset.js",
+  "module": "dist/inset.module.js",
   "jsnext:main": "dist/inset.module.js",
-
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
-
   "repository": "patlillis/inset",
-
   "author": {
-    "name":  "Pat Lillis",
+    "name": "Pat Lillis",
     "email": "lillispm@gmail.com",
-    "url":   "http://pat.lillis.me"
+    "url": "http://pat.lillis.me"
   },
-
   "scripts": {
-    "build":      "rollup -c",
-    "dev":        "rollup -c -w -m inline",
-    "lint":       "eslint src",
-    "prebuild":   "rm -rf dist",
+    "build": "rollup -c",
+    "dev": "rollup -c -w -m inline",
+    "lint": "eslint src",
+    "prebuild": "rm -rf dist",
     "prepublish": "npm run test",
-    "pretest":    "npm run build",
-    "server":     "python -m SimpleHTTPServer 3000",
-    "test":       "npm run lint && mocha"
+    "pretest": "npm run build",
+    "server": "python -m SimpleHTTPServer 3000",
+    "test": "npm run lint && mocha"
   },
-
-  "keywords": [
-
-  ],
-
+  "keywords": [],
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "babel-preset-env": "^1.2.2",
