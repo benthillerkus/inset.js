@@ -49,15 +49,18 @@ npm install
 Command line tests are performed using [PhantomJS](http://phantomjs.org/) (hooked into Mocha with [phantom-js-core](https://github.com/nathanboktae/mocha-phantomjs-core)). Once you have run `npm install`, it should be as simple as
 
 ```bash
-npm test
+npm run test
 ```
 
 Test results will be displayed in the terminal.
 
 ### Manual
 
-To run the tests yourself manually in a browser, open your local copy of
-[manual.html](test/manual.html) in your favorite browser of choice.
+To perform the tests yourself manually in a browser, run
+
+```bash
+npm run test:manual
+```
 
 Test results will be displayed in a lovely interactive UI using Mocha's [HTML](https://mochajs.org/#html) reporter. As a bonus, it will also display image diffs of all Canvas tests.
 

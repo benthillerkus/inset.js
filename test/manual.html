@@ -27,6 +27,8 @@
         mocha.ui('bdd')
         mocha.reporter('html')
         var expect = chai.expect
+        chai.config.includeStack = true
+        mocha.showDiff = true
     </script>
 
     <!-- Load our package and test files -->

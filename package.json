@@ -20,7 +20,10 @@
     "install": "npm run build",
     "prepublishOnly": "npm run test",
     "pretest": "npm run lint && npm run build",
-    "test": "phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js test/manual.html"
+    "test": "phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js test/manual.html",
+    "test:manual": " npm run pretest && run-p test:manual:start test:manual:open",
+    "test:manual:start": "http-server -a localhost -p 8081 -c-1",
+    "test:manual:open": "opn http://localhost:8081/test/manual.html"
   },
   "keywords": [],
   "devDependencies": {
@@ -31,9 +34,12 @@
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
+    "http-server": "^0.9.0",
     "imagediff": "^1.0.8",
     "mocha": "^3.2.0",
     "mocha-phantomjs-core": "^2.1.1",
+    "npm-run-all": "^4.0.2",
+    "opn-cli": "^3.1.0",
     "phantomjs": "^2.1.7",
     "rollup": "^0.41.1",
     "rollup-plugin-babel": "^2.7.1",
