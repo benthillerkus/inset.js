@@ -18,7 +18,7 @@ describe('inset', function () {
     var c2 = document.createElement('canvas')
     var ctx2 = c2.getContext('2d')
     ctx2.fillRect(0, 0, 300, 150)
-    
+
     expectCanvasesToBeEqual(c, c2)
 
     // Load expected image.
