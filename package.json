@@ -17,7 +17,7 @@
     "dev": "rollup -c -w -m inline",
     "lint": "eslint src test",
     "prebuild": "rm -rf dist",
-    "prepublish": "npm run test",
+    "prepare": "npm run test",
     "pretest": "npm run lint && npm run build",
     "test": "phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js test/manual.html"
   },
