@@ -63,6 +63,6 @@ Test results will be displayed in a lovely interactive UI using Mocha's [HTML](h
 
 ## License
 
-MIT. © 2017 Pat Lillis
+[Code licensed MIT](LICENSE). © 2017 Pat Lillis.
 
 [![Built With Love](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
