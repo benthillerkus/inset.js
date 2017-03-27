@@ -1,16 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
 
-<html lang="en-US">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-    <script src="../dist/inset.js"></script>
+    <title>Inset - Tests</title>
+    <!-- Load libraries -->
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script src="../node_modules/chai/chai.js"></script>
+    <script src="../node_modules/imagediff/imagediff.js"></script>
+
+    <!-- Styles for custom canvas-diffing -->
+    <style>
+        canvas {
+            border: 1px solid lightgrey;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Mocha initialization -->
+    <div id="mocha"></div>
     <script>
-      console.log('Module assigned to window.Inset. Logged below:')
-      console.log(Inset)
+        var phantom = navigator.userAgent.indexOf('PhantomJS') !== -1
+        mocha.ui('bdd')
+        mocha.reporter('html')
+        var expect = chai.expect
     </script>
-  </body>
+
+    <!-- Load our package and test files -->
+    <script src="../dist/inset.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/tests.js"></script>
+
+    <!-- Run tests -->
+    <script>
+        mocha.checkLeaks()
+        mocha.run()
+    </script>
+</body>
+
 </html>

@@ -15,12 +15,11 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w -m inline",
-    "lint": "eslint src",
+    "lint": "eslint src test",
     "prebuild": "rm -rf dist",
     "prepublish": "npm run test",
-    "pretest": "npm run build",
-    "server": "python -m SimpleHTTPServer 3000",
-    "test": "npm run lint && mocha"
+    "pretest": "npm run lint && npm run build",
+    "test": "phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js test/manual.html"
   },
   "keywords": [],
   "devDependencies": {
@@ -31,7 +30,10 @@
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
+    "imagediff": "^1.0.8",
     "mocha": "^3.2.0",
+    "mocha-phantomjs-core": "^2.1.1",
+    "phantomjs": "^2.1.7",
     "rollup": "^0.41.1",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-node-resolve": "^2.0.0",

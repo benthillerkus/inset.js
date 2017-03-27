@@ -3,6 +3,9 @@
   var c = document.createElement('canvas')
   var ctx = c.getContext('2d')
 
+  // This is mainly just for testing, to make sure the script ran.
+  window.Inset = 'Inset'
+
   // Needed for the drawing of the insets.
   var fillRect = CanvasRenderingContext2D.prototype.fillRect
 
