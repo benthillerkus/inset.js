@@ -18,7 +18,7 @@
     "lint": "eslint src test",
     "prebuild": "rm -rf dist",
     "install": "npm run build",
-    "prepublishOnly": "npm run test"
+    "prepublishOnly": "npm run test",
     "pretest": "npm run lint && npm run build",
     "test": "phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js test/manual.html"
   },
