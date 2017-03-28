@@ -6,6 +6,17 @@ Inset shadows for HTML's `<canvas>` element.
 
 Currently supports inset shadows on shapes draw with `fillRect`, or shapes draw using the path functions (`beginPath`, `moveTo`, `lineTo`, `arc`, `arcTo`, etc.) and then `fill`.
 
+<!--
+## Install
+
+Inset was developed with a modern JavaScript workflow in mind. To use it, it's recommended you have a build system in place that can transpile ES6, and bundle modules. For a minimal boilerplate that does so, check out [outset](https://github.com/callmecavs/outset).
+
+Using NPM, install inset, and add it to your package.json dependencies.
+
+$ npm install inset.js --save
+Refer to the releases page for version specific information.
+-->
+
 ## Usage
 
 Simply set 

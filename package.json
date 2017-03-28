@@ -1,17 +1,22 @@
 {
   "name": "inset.js",
   "description": "Inset shadows for HTML's <canvas> element.",
+
   "main": "dist/inset.js",
   "module": "dist/inset.module.js",
   "jsnext:main": "dist/inset.module.js",
+
   "version": "0.0.2",
   "license": "MIT",
+
   "repository": "patlillis/inset",
+
   "author": {
     "name": "Pat Lillis",
     "email": "lillispm@gmail.com",
     "url": "http://pat.lillis.me"
   },
+
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w -m inline",
@@ -25,7 +30,13 @@
     "test:open": "opn http://localhost:8080/test/manual.html",
     "test:phantomjs": "npm run pretest && phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js test/manual.html"
   },
-  "keywords": [],
+
+  "keywords": [
+    "canvas",
+    "inset",
+    "shadow"
+  ],
+
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "babel-preset-env": "^1.2.2",
