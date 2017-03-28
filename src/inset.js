@@ -133,6 +133,7 @@ const inset = () => {
     )
   })
 
+  // Reset size of destCanvas to match srcCanvas, with a buffer around the edge.
   function resetSize (destCanvas, srcCanvas, buffer) {
     var newWidth = srcCanvas.width + 2 * buffer
     var newHeight = srcCanvas.height + 2 * buffer

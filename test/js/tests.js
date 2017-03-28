@@ -1,4 +1,4 @@
-/* eslint-env mocha */
+/* eslint-env browser, mocha */
 /* global expect, expectCanvasToEqualImg */
 
 // Note: if this ever ends up running on PhantomJS, will need to
@@ -14,6 +14,10 @@ describe('inset', () => {
 
   it('is installed', () => {
     expect(window._inset).to.not.be.undefined
+  })
+
+  it('adds insetShadow prop to CanvasRenderingContext2D prototype', () => {
+    expect(CanvasRenderingContext2D.prototype.shadowInset).to.not.be.undefined
   })
 
   describe('fillRect', () => {
@@ -61,4 +65,6 @@ describe('inset', () => {
       expectCanvasToEqualImg(canvas, imageSource, done)
     })
   })
+
+  // TODO: Add tests for beginPath, arc, lineTo, etc.
 })
