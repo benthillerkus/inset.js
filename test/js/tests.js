@@ -37,18 +37,17 @@ describe('inset', () => {
       expectCanvasToEqualImg(canvas, imageSource, done)
     })
 
-    // TODO: Don't use the same hidden canvas for every user canvas.
-    // it('draws with an inset shadow', (done) => {
-    //   ctx.fillStyle = 'red'
-    //   ctx.shadowInset = true
-    //   ctx.shadowColor = 'black'
-    //   ctx.shadowBlur = 35
-    //   ctx.fillRect(50, 50, 200, 50)
+    it('draws with an inset shadow', (done) => {
+      ctx.fillStyle = 'red'
+      ctx.shadowInset = true
+      ctx.shadowColor = 'black'
+      ctx.shadowBlur = 35
+      ctx.fillRect(50, 50, 200, 50)
 
-    //   // Load expected image.
-    //   const imageSource = 'img/fill-rect-inset-shadow-full.png'
-    //   expectCanvasToEqualImg(canvas, imageSource, done)
-    // })
+      // Load expected image.
+      const imageSource = 'img/fill-rect-inset-shadow.png'
+      expectCanvasToEqualImg(canvas, imageSource, done)
+    })
 
     it('draws with an inset shadow, filling the entire canvas', (done) => {
       ctx.fillStyle = 'red'

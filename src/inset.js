@@ -1,9 +1,10 @@
 /* eslint-env browser */
 
 const inset = () => {
+  // Each user canvas will have its own hidden canvas.
+  // This WeakMap is to track user canvas to hidden canvas.
+  const map = new WeakMap()
   const prototype = CanvasRenderingContext2D.prototype
-  const canvas = document.createElement('canvas')
-  const ctx = canvas.getContext('2d')
 
   // Needed for the drawing of the insets.
   const fillRect = prototype.fillRect
@@ -24,6 +25,19 @@ const inset = () => {
     'arcTo',
     'rect'
   ]
+
+  // Get the corresponding hidden canvas for specified user canvas.
+  // Will return a new hidden canvas if none exists.
+  function getHiddenCanvas (userCanvas) {
+    let hiddenCanvas
+    if (map.has(userCanvas)) {
+      hiddenCanvas = map.get(userCanvas)
+    } else {
+      hiddenCanvas = document.createElement('canvas')
+      map.set(userCanvas, hiddenCanvas)
+    }
+    return hiddenCanvas
+  }
 
   // Override "method" to call "callback" if shadowInset = true.
   function overrideIfInset (methodName, callback) {
@@ -47,8 +61,13 @@ const inset = () => {
     overrideIfInset(
       func,
       (userCtx, original, args) => {
-        // Reset canvas size, if necessary.
         const userCanvas = userCtx.canvas
+        const canvas = getHiddenCanvas(userCanvas)
+        const ctx = canvas.getContext('2d')
+
+        // Reset canvas size, if necessary.
+        // Need buffer to make sure that shapes drawn right on the edge
+        // still have shadow.
         const buffer = Math.max(userCanvas.width, userCanvas.height)
         resetSize(canvas, userCanvas, buffer)
 
@@ -65,7 +84,10 @@ const inset = () => {
       func,
       (userCtx, original, args) => {
         const userCanvas = userCtx.canvas
+        const canvas = getHiddenCanvas(userCanvas)
+        const ctx = canvas.getContext('2d')
 
+        // Reset canvas size, if necessary.
         // Need buffer to make sure that shapes drawn right on the edge
         // still have shadow.
         const buffer = Math.max(userCanvas.width, userCanvas.height)
