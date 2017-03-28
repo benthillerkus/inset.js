@@ -3,6 +3,7 @@ html,body {
   color:#455D7A;
   font-family:Raleway, sans-serif;
   height:100%;
+  overflow-x: hidden;
 }
 
 body {
