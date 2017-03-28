@@ -1,6 +1,7 @@
 # Inset.js
 
 [![Standard JavaScript Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
+[![NPM - inset.js](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/inset.js)
 
 Inset shadows for HTML's `<canvas>` element.
 
