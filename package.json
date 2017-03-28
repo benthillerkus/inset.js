@@ -6,7 +6,7 @@
   "jsnext:main": "dist/inset.module.js",
   "version": "0.1.0",
   "license": "MIT",
-  "repository": "patlillis/inset",
+  "repository": "patlillis/inset.js",
   "author": {
     "name": "Pat Lillis",
     "email": "lillispm@gmail.com",
@@ -18,7 +18,6 @@
     "lint": "eslint src test",
     "prebuild": "rm -rf dist",
     "install": "npm run build",
-    "prepublishOnly": "npm run test",
     "pretest": "npm run lint && npm run build",
     "test": "npm-run-all --parallel test:start test:open",
     "test:start": "http-server -a localhost -p 8080 -c-1",
