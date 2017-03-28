@@ -100,5 +100,5 @@ function insertDiff (c1, c2, diff, areEqual) {
     var code = pre.querySelector('code')
 
     pre.insertBefore(div, code)
-  }, 250)
+  }, 0)
 }

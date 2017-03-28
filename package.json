@@ -20,10 +20,10 @@
     "install": "npm run build",
     "prepublishOnly": "npm run test",
     "pretest": "npm run lint && npm run build",
-    "test": "phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js test/manual.html",
-    "test:manual": " npm run pretest && run-p test:manual:start test:manual:open",
-    "test:manual:start": "http-server -a localhost -p 8081 -c-1",
-    "test:manual:open": "opn http://localhost:8081/test/manual.html"
+    "test": "npm-run-all --parallel test:start test:open",
+    "test:start": "http-server -a localhost -p 8080 -c-1",
+    "test:open": "opn http://localhost:8080/test/manual.html",
+    "test:phantomjs": "npm run pretest && phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js test/manual.html"
   },
   "keywords": [],
   "devDependencies": {
