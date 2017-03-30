@@ -1,5 +1,6 @@
 /* eslint-env browser, mocha */
-/* global expect, testFillRect, testPathStraightLine, testPathArc, testPathRect */
+/* global expect, testFillRect, testPathStraightLine,
+   testPathArc, testPathRect, testPathCurve */
 
 describe('Inset.js', () => {
   it('adds insetShadow prop to CanvasRenderingContext2D prototype', () => {
@@ -10,4 +11,5 @@ describe('Inset.js', () => {
   testPathStraightLine()
   testPathArc()
   testPathRect()
+  testPathCurve()
 })
