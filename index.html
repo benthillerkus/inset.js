@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Inset.js</title>
     <meta name="description" content="Inset shadows for HTML's <canvas> element.">
+    <meta name="author" content="Pat Lillis">
+    <meta name="keywords" content="canvas, inset, shadow, javascript">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
@@ -15,19 +17,19 @@
 </head>
 
 <body>
-    <div class="title">
+    <header class="title">
         <h1>
             Inset.js
         </h1>
-    </div>
+    </header>
     <p class="subtitle">
         Inset shadows for HTML's <span class="code">&lt;canvas&gt;</span> element.
     </p>
     <div class="hr"></div>
     <p>
-        Currently supports inset shadows on shapes draw with <span class="code">fillRect</span>,
-        or shapes draw using the path functions
-        (<span class="code">beginPath</span>,
+        Currently supports inset shadows on shapes draw with <span class="code">fillRect</span>, or shapes draw using the
+        path functions (
+        <span class="code">beginPath</span>,
         <span class="code">moveTo</span>,
         <span class="code">lineTo</span>,
         <span class="code">arc</span>,
@@ -41,6 +43,18 @@
     <p class="footer center">
         Code licensed MIT. &copy; 2017 Pat Lillis.
     </p>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-96539298-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
 </body>
 
 </html>
