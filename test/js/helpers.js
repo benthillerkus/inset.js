@@ -1,6 +1,6 @@
 /* eslint-env browser, mocha */
-/* eslint no-unused-vars: "warn" */
-/* global chai, expect, imagediff, phantom */
+/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "expectCanvasesToBeEqual|expectCanvasToEqualImg" }] */
+/* global chai, expect, imagediff */
 
 function get (element, content) {
   element = document.createElement(element)
@@ -32,9 +32,10 @@ function expectCanvasesToBeEqual (c1, c2) {
     var diff = imagediff.diff(c1, c2)
     var areEqual = imagediff.equal(c1, c2)
 
-    // Only output fancy diff if not running in PhantomJS.
-    // TODO: print diff to file if running in PhantomJS.
-    if (!phantom) insertDiff(c1, c2, diff, areEqual)
+    // Output fancy diff.
+    insertDiff(c1, c2, diff, areEqual)
+
+    // Error message & expect.
     var errorMessage = 'canvases did not match.'
     expect(areEqual, errorMessage).to.be.true
   }
@@ -48,12 +49,14 @@ function expectCanvasToEqualImg (c, imgUrl, done) {
       var diff = imagediff.diff(c, img)
       var areEqual = imagediff.equal(c, img)
 
-      // Only output fancy diff if not running in PhantomJS.
-      // TODO: print diff to file if running in PhantomJS.
-      if (!phantom) insertDiff(c, img, diff, areEqual)
+      // Output fancy diff.
+      insertDiff(c, img, diff, areEqual)
 
       var errorMessage = 'canvas did not match image ' + imgUrl + '.'
       done(areEqual ? undefined : new chai.AssertionError(errorMessage))
+    }
+    img.onerror = function () {
+      done(new Error('failed to load image ' + imgUrl + '.'))
     }
     img.src = imgUrl
   }

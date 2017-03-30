@@ -1,7 +1,7 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (factory());
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(factory());
 }(this, (function () { 'use strict';
 
 /* eslint-env browser */
@@ -106,6 +106,9 @@ var inset = function inset() {
 
       // Composite the shadow from the hidden canvas onto the user canvas.
       userCtx.drawImage(canvas, buffer, buffer, userCanvas.width, userCanvas.height, 0, 0, userCanvas.width, userCanvas.height);
+
+      // Clear hidden canvas.
+      ctx.clearRect(-buffer, -buffer, canvas.width, canvas.height);
 
       // Re-apply shadows back to user canvas, and remove shadows from
       // hidden canvas.

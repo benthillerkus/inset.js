@@ -126,6 +126,9 @@ const inset = () => {
           userCanvas.height
         )
 
+        // Clear hidden canvas.
+        ctx.clearRect(-buffer, -buffer, canvas.width, canvas.height)
+
         // Re-apply shadows back to user canvas, and remove shadows from
         // hidden canvas.
         swapShadows(ctx, userCtx)

@@ -1,0 +1,22 @@
+#mocha .test h2.expanded {
+    font-weight: bold;
+}
+
+#mocha .test h2.expanded:before {
+    content: '▾';
+    font-size: 16px;
+    line-height: 1.0;
+    display: block;
+    float: left;
+    margin-right: 5px;
+    color: #333;
+}
+#mocha .test h2:not(.expanded):before {
+    content: '▸';
+    font-size: 16px;
+    line-height: 1.0;
+    display: block;
+    float: left;
+    margin-right: 5px;
+    color: #333;
+}

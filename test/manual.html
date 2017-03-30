@@ -3,12 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Inset - Tests</title>
+    <title>Inset.js - Tests</title>
     <!-- Load libraries -->
     <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+    <link rel="stylesheet" href="css/html-reporter-tweaks.css">
     <script src="../node_modules/mocha/mocha.js"></script>
     <script src="../node_modules/chai/chai.js"></script>
     <script src="../node_modules/imagediff/imagediff.js"></script>
+    <script src="js/html-reporter-tweaks.js"></script>
 
     <!-- Styles for custom canvas-diffing -->
     <style>
@@ -23,7 +25,6 @@
     <!-- Mocha initialization -->
     <div id="mocha"></div>
     <script>
-        var phantom = navigator.userAgent.indexOf('PhantomJS') !== -1
         mocha.ui('bdd')
         mocha.reporter('html')
         var expect = chai.expect
@@ -34,7 +35,12 @@
     <!-- Load our package and test files -->
     <script src="../dist/inset.browser.js"></script>
     <script src="js/helpers.js"></script>
-    <script src="js/tests.js"></script>
+    <script src="js/tests/fill-rect.js"></script>
+    <script src="js/tests/path-arc.js"></script>
+    <script src="js/tests/path-straight-line.js"></script>
+    <script src="js/tests/path-curve.js"></script>
+    <script src="js/tests/path-rect.js"></script>
+    <script src="js/tests/general.js"></script>
 
     <!-- Run tests -->
     <script>
