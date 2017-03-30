@@ -139,8 +139,7 @@ var inset = function inset() {
 };
 
 // Only do initialization once.
-if (!window._inset) {
-  window._inset = true;
+if (typeof CanvasRenderingContext2D.prototype.shadowInset === 'undefined') {
   inset();
 }
 

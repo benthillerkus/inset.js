@@ -12,10 +12,6 @@ describe('inset', () => {
     ctx = canvas.getContext('2d')
   })
 
-  it('is installed', () => {
-    expect(window._inset).to.not.be.undefined
-  })
-
   it('adds insetShadow prop to CanvasRenderingContext2D prototype', () => {
     expect(CanvasRenderingContext2D.prototype.shadowInset).to.not.be.undefined
   })
