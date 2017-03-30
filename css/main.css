@@ -59,9 +59,8 @@ p {
 }
 
 .footer {
-  margin-bottom:16px;
   margin-top:auto;
-  padding-top:24px;
+  padding: 32px 0 16px;
 }
 
 .center {
