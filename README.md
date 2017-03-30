@@ -9,25 +9,30 @@ Currently supports inset shadows on shapes draw with `fillRect`, or shapes draw 
 
 ## Usage
 
-Inset was developed with a modern JavaScript workflow in mind. To use it, it's recommended you have a build system in place that can transpile ES6, and bundle modules. For a minimal boilerplate that does so, check out [outset](https://github.com/callmecavs/outset).
-
 ### Install
 
-Using NPM, install inset.js, and add it to your package.json dependencies.
+Inset.js was developed with a modern JavaScript workflow in mind. To use it, it's recommended you have a build system in place that can transpile ES6 and bundle modules. For a minimal boilerplate that does so, check out [outset](https://github.com/callmecavs/outset).
+
+Using NPM, install Inset.js, and add it to your package.json dependencies.
 
 ```bash
 npm install inset.js --save
 ```
-<!--Refer to the releases page for version specific information.-->
 
-### Import
-
-Import Inset. Do not bind any variables, as Inset does all its work in the background and does not export anything.
+Then import Inset.js in your main JavaScript file. Do not bind any variables, as Inset.js does all its work in the background and does not export anything.
 
 ```javascript
 import 'inset.js'
 ```
 
+### Include
+
+If you are not using a build system capable of transpiling ES6 and bundling modules, you can just inlcude Inset.js directly:
+
+```html
+<!-- Include Inset.js -->
+<script src="/dist/inset.browser.js"></script>
+```
 
 ### Inset!
 
@@ -55,17 +60,34 @@ ctx.fillRect(0, 0, c.width, c.height);
 
 http://codepen.io/patlillis/pen/vxaery
 
-## Testing
+## Development
 
-Tests are performed using [Mocha](https://mochajs.org/), along with a little help from the excellent [imagediff](https://github.com/HumbleSoftware/js-imagediff) library. Since this project relies on the browser-based `Canvas` API, tests are run in a browser-like environment.
+### Testing
 
-To run tests locally, first clone this repo and install all the necessary NPM packages.
+Tests are performed using [Mocha](https://mochajs.org/), along with a little help from the excellent [imagediff](https://github.com/HumbleSoftware/js-imagediff) library. Since this project relies on the browser-based `Canvas` API, tests are run in a browser-like environment. Currently, the only way to perform tests is in an actual full browser (support for PhantomJS is in the works).
+
+To run tests locally, first clone this repo and install all the necessary NPM packages. Then run the tests using the provided NPM script.
 
 ```bash
 git clone https://github.com/patlillis/inset.js
 cd inset.js
 npm install
+npm test
 ```
+
+Test results will be displayed in a lovely interactive UI using Mocha's [HTML](https://mochajs.org/#html) reporter. As a bonus, it will also display image diffs of all canvas tests.
+
+### NPM Tasks
+
+Several NPM tasks are provided for ease of development. If you're really curious, check out [package.json](package.json) for more details.
+
+| Task                | Usage                                                                                 |
+| ------------------- | ------------------------------------------------------------------------------------- |
+| `npm run build`     | Build Inset.js from [src/](src) to [dist/](dist). Includes module and browser builds. |
+| `npm run dev`       | Build development version of Inset.js.                                                |
+| `npm run dev:watch` | Build development version of Inset.js, and rebuild when any files change.             |
+| `npm run lint`      | Check code for style errors. Checks all *.js files in [src/](src) and [test/](test).  |
+| `npm run test`      | Start up a browser to run tests on Inset.js. Loads the [test page](test/manual.html). |
 
 <!--
 ### Command line
@@ -78,15 +100,6 @@ npm run test
 
 Test results will be displayed in the terminal.
 -->
-### Manual
-
-Currently, the only way to perform tests is in an actual full browser (support for PhantomJS is in the works). To perform the tests yourself manually in a browser, run
-
-```bash
-npm run test
-```
-
-Test results will be displayed in a lovely interactive UI using Mocha's [HTML](https://mochajs.org/#html) reporter. As a bonus, it will also display image diffs of all Canvas tests.
 
 ## License
 

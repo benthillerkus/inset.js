@@ -4,6 +4,7 @@
   "main": "dist/inset.js",
   "module": "dist/inset.module.js",
   "jsnext:main": "dist/inset.module.js",
+  "browser:main": "dist/inset.browser.js",
   "version": "0.3.0",
   "license": "MIT",
   "repository": "patlillis/inset.js",
@@ -13,15 +14,19 @@
     "url": "http://pat.lillis.me"
   },
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w -m inline",
+    "build": "npm run build:module && npm run build:browser",
+    "build:module": "rollup -c rollup.config.js",
+    "build:browser": "rollup -c rollup.config.browser.js",
+    "dev": "npm run dev:module && npm run dev:browser",
+    "dev:module": "rollup -c rollup.config.js -m inline",
+    "dev:browser": "rollup -c rollup.config.browser.js -m inline",
+    "dev:watch": "onchange \"src/**/*.js\" \"test/**/*.*\" -- npm run dev",
     "lint": "eslint src test",
     "prepublishOnly": "npm run build",
-    "pretest": "npm run lint && npm run build",
-    "test": "npm-run-all --parallel test:start test:open",
+    "pretest": "npm run lint",
+    "test": "npm-run-all -p dev:watch test:start test:open",
     "test:start": "http-server -a localhost -p 8080 -c-1",
-    "test:open": "opn http://localhost:8080/test/manual.html",
-    "test:phantomjs": "npm run pretest && phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js test/manual.html"
+    "test:open": "opn http://localhost:8080/test/manual.html"
   },
   "keywords": [
     "canvas",
@@ -41,11 +46,13 @@
     "mocha": "^3.2.0",
     "mocha-phantomjs-core": "^2.1.1",
     "npm-run-all": "^4.0.2",
+    "onchange": "^3.2.1",
     "opn-cli": "^3.1.0",
     "phantomjs": "^2.1.7",
     "rollup": "^0.41.1",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
     "rollup-watch": "^3.2.2"
   }
 }
