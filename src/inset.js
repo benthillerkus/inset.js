@@ -8,9 +8,10 @@ const inset = () => {
 
   // Needed for the drawing of the insets.
   const fillRect = prototype.fillRect
+  const drawImage = prototype.drawImage
 
   // These need to have the shadow filled in.
-  const fillFunctions = ['fillRect', 'fill']
+  const fillFunctions = ['fill', 'fillRect', 'drawImage']
 
   // These should not be filled, and instead just called on the hidden canvas
   // directly.
@@ -108,13 +109,13 @@ const inset = () => {
         // Draw itself again using drop-shadow filter, allowing buffer for
         // shadow to overflow user canvas. The result is the inset shadow
         // that we're after.
-        ctx.drawImage(canvas, -buffer, -buffer)
+        drawImage.apply(ctx, [canvas, -buffer, -buffer])
 
         // Perform the actual draw operation that the user requested.
         original.apply(userCtx, args)
 
         // Composite the shadow from the hidden canvas onto the user canvas.
-        userCtx.drawImage(
+        drawImage.apply(userCtx, [
           canvas,
           buffer,
           buffer,
@@ -123,8 +124,7 @@ const inset = () => {
           0,
           0,
           userCanvas.width,
-          userCanvas.height
-        )
+          userCanvas.height])
 
         // Clear hidden canvas.
         ctx.clearRect(-buffer, -buffer, canvas.width, canvas.height)

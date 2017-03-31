@@ -12,39 +12,47 @@ function testPathArc () {
   })
 
   function drawArc (offset = {x: 0, y: 0}) {
-    ctx.save()
-    ctx.translate(offset.x, offset.y)
+    drawArcForContext(ctx, offset);
+  }
 
-    ctx.beginPath()
-    ctx.arc(canvas.width / 4, canvas.height / 2, canvas.width / 2 - 140, Math.PI, 0)
-    ctx.arc(canvas.width / 4, canvas.height / 2, canvas.width / 2 - 90, 0, Math.PI, true)
-    ctx.closePath()
-    ctx.fill()
+  function drawArcForContext (context, offset = {x: 0, y: 0}) {
+    context.save()
+    context.translate(offset.x, offset.y)
 
-    ctx.restore()
+    context.beginPath()
+    context.arc(canvas.width / 4, canvas.height / 2, canvas.width / 2 - 140, Math.PI, 0)
+    context.arc(canvas.width / 4, canvas.height / 2, canvas.width / 2 - 90, 0, Math.PI, true)
+    context.closePath()
+    context.fill()
+
+    context.restore()
   }
 
   function drawArcTo (offset = {x: 0, y: 0}) {
+    drawArcToForContext(ctx, offset)
+  }
+
+  function drawArcToForContext(context, offset = {x: 0, y: 0}) {
     const radius = 15
 
-    ctx.save()
-    ctx.translate(offset.x, offset.y)
+    context.save()
+    context.translate(offset.x, offset.y)
 
-    ctx.beginPath()
+    context.beginPath()
     // draw top and top right corner
-    ctx.moveTo(canvas.width / 2 + 50 + radius, 50)
-    ctx.arcTo(canvas.width - 50, 50, canvas.width - 50, 50 + radius, radius)
+    context.moveTo(canvas.width / 2 + 50 + radius, 50)
+    context.arcTo(canvas.width - 50, 50, canvas.width - 50, 50 + radius, radius)
     // draw right side and bottom right corner
-    ctx.arcTo(canvas.width - 50, canvas.height - 50, canvas.width - 50 - radius, canvas.height - 50, radius)
+    context.arcTo(canvas.width - 50, canvas.height - 50, canvas.width - 50 - radius, canvas.height - 50, radius)
     // draw bottom and bottom left corner
-    ctx.arcTo(canvas.width / 2 + 50, canvas.height - 50, canvas.width / 2 + 50, canvas.height - 50 - radius, radius)
+    context.arcTo(canvas.width / 2 + 50, canvas.height - 50, canvas.width / 2 + 50, canvas.height - 50 - radius, radius)
     // draw left and top left corner
-    ctx.arcTo(canvas.width / 2 + 50, 50, canvas.width / 2 + 50 + radius, 50, radius)
+    context.arcTo(canvas.width / 2 + 50, 50, canvas.width / 2 + 50 + radius, 50, radius)
 
-    ctx.closePath()
-    ctx.fill()
+    context.closePath()
+    context.fill()
 
-    ctx.restore()
+    context.restore()
   }
 
   describe('path (arc)', () => {
@@ -116,6 +124,31 @@ function testPathArc () {
 
       // Load expected image.
       const imageSource = 'img/path-arc/normal-and-inset-shadows.png'
+      expectCanvasToEqualImg(canvas, imageSource, done)
+    })
+
+    it('draws using multiple canvases', (done) => {
+      const canvas2 = document.createElement('canvas')
+      const ctx2 = canvas2.getContext('2d')
+
+      // Draw shape on first canvas.
+      ctx.fillStyle = 'red'
+      ctx.shadowInset = true
+      ctx.shadowColor = 'black'
+      ctx.shadowBlur = 35
+      drawArc()
+
+      // Draw shape on second canvas. This one shouldn't have
+      // a shadow, since "drawImage" will apply the shadow to
+      // the original canvas.
+      ctx2.fillStyle = 'red'
+      drawArcToForContext(ctx2)
+
+      // Composite second canvas onto first canvas.
+      ctx.drawImage(canvas2, 0, 0)
+
+      // Load expected image.
+      const imageSource = 'img/path-arc/multiple-canvas.png'
       expectCanvasToEqualImg(canvas, imageSource, done)
     })
   })

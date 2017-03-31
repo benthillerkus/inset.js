@@ -87,5 +87,30 @@ function testFillRect () {
       const imageSource = 'img/fill-rect/inset-shadow-full.png'
       expectCanvasToEqualImg(canvas, imageSource, done)
     })
+
+    it('draws using multiple canvases', (done) => {
+      const canvas2 = document.createElement('canvas')
+      const ctx2 = canvas2.getContext('2d')
+
+      // Draw shape on first canvas.
+      ctx.fillStyle = 'red'
+      ctx.shadowInset = true
+      ctx.shadowColor = 'black'
+      ctx.shadowBlur = 35
+      ctx.fillRect(50, 50, 50, 50)
+
+      // Draw shape on second canvas. This one shouldn't have
+      // a shadow, since "drawImage" will apply the shadow to
+      // the original canvas.
+      ctx2.fillStyle = 'red'
+      ctx2.fillRect(200, 50, 50, 50)
+
+      // Composite second canvas onto first canvas.
+      ctx.drawImage(canvas2, 0, 0)
+
+      // Load expected image.
+      const imageSource = 'img/fill-rect/multiple-canvas.png'
+      expectCanvasToEqualImg(canvas, imageSource, done)
+    })
   })
 }
