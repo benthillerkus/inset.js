@@ -6,7 +6,7 @@
   "module": "dist/inset.module.js",
   "jsnext:main": "dist/inset.module.js",
   "browser:main": "dist/inset.browser.js",
-  "version": "0.6.0",
+  "version": "1.0.0",
   "license": "MIT",
   "repository": "patlillis/inset.js",
   "author": {
