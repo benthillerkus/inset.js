@@ -57,7 +57,7 @@ ctx.shadowBlur = 15;
 ctx.shadowColor = 'black';
 
 ctx.fillStyle = 'red';
-ctx.fillRect(0, 0, c.width, c.height);
+ctx.fillRect(50, 50, 50, 50);
 ```
 
 ## Example
