@@ -7,7 +7,7 @@ Inset shadows for HTML's `<canvas>` element.
 
 Trying to draw inset shadows using the HTML Canvas API can be suprisingly difficult, often requiring obscure techniques like [duplicating your drawing code](http://stackoverflow.com/a/27892121), [using the `clip` method](https://www.rgraph.net/blog/an-example-of-html5-canvas-shadows.html#inner-shadows), or ["opposite winding"](https://www.html5rocks.com/en/tutorials/canvas/texteffects/#toc-inner-shadow).
 
-In contrast, Inset.js requires only a single line of code, and does not require you to duplicate any code. See the [Inset!](#inset) section for more details. This is achieved by a combination of an off-screen canvas for some fancy alpha inversion (inspired by [this StackOverflow post](http://stackoverflow.com/a/37380488)), along with [monkey-patching](http://me.dt.in.th/page/JavaScript-override/) a few select CanvasRenderingContext2D methods.
+In contrast, Inset.js requires only a single line of code, and does not require you to duplicate any code. See the [Inset!](#inset) section for more details. This is achieved by a combination of an off-screen canvas for some fancy alpha inversion (inspired by [this StackOverflow post](http://stackoverflow.com/a/37380488)), along with monkey-patching a few select  methods on CanvasRenderingContext2D.
 
 Inset.js currently supports inset shadows on shapes drawn with `fillRect`, shapes drawn with `drawImage`, or shapes drawn using the path functions (`beginPath`, `moveTo`, `lineTo`, `arc`, `arcTo`, etc.) and then `fill`.
 
@@ -68,7 +68,7 @@ http://codepen.io/patlillis/pen/vxaery
 
 ### Testing
 
-Tests are performed using [Mocha](https://mochajs.org/), along with a little help from the excellent [imagediff](https://github.com/HumbleSoftware/js-imagediff) library. Since this project relies on the browser-based `Canvas` API, tests are run in a browser-like environment. Currently, the only way to perform tests is in an actual full browser (support for PhantomJS is in the works).
+Tests are performed using [Mocha](https://mochajs.org/), along with a little help from the excellent [imagediff](https://github.com/HumbleSoftware/js-imagediff) library. Since this project relies on the browser-based Canvas API, tests are run in a browser-like environment. Currently, the only way to perform tests is in an actual full real browser.
 
 To run tests locally, first clone this repo and install all the necessary NPM packages. Then run the tests using the provided NPM script.
 
