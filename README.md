@@ -5,7 +5,7 @@
 
 Inset shadows for HTML's `<canvas>` element.
 
-Trying to draw inset shadows using the HTML Canvas API can be suprisingly difficult, often requires obscure techniques like [duplicating your drawing code](http://stackoverflow.com/a/27892121), [using the `clip` method](https://www.rgraph.net/blog/an-example-of-html5-canvas-shadows.html#inner-shadows), or ["opposite winding"](https://www.html5rocks.com/en/tutorials/canvas/texteffects/#toc-inner-shadow).
+Trying to draw inset shadows using the HTML Canvas API can be suprisingly difficult, often requiring obscure techniques like [duplicating your drawing code](http://stackoverflow.com/a/27892121), [using the `clip` method](https://www.rgraph.net/blog/an-example-of-html5-canvas-shadows.html#inner-shadows), or ["opposite winding"](https://www.html5rocks.com/en/tutorials/canvas/texteffects/#toc-inner-shadow).
 
 In contrast, Inset.js requires only a single line of code, and does not require you to duplicate any code. See the [Inset!](#inset) section for more details. This is achieved by a combination of an off-screen canvas for some fancy alpha inversion (inspired by [this StackOverflow post](http://stackoverflow.com/a/37380488)), along with [monkey-patching](http://me.dt.in.th/page/JavaScript-override/) a few select CanvasRenderingContext2D methods.
 
