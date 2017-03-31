@@ -12,7 +12,7 @@ function testPathArc () {
   })
 
   function drawArc (offset = {x: 0, y: 0}) {
-    drawArcForContext(ctx, offset);
+    drawArcForContext(ctx, offset)
   }
 
   function drawArcForContext (context, offset = {x: 0, y: 0}) {
@@ -32,7 +32,7 @@ function testPathArc () {
     drawArcToForContext(ctx, offset)
   }
 
-  function drawArcToForContext(context, offset = {x: 0, y: 0}) {
+  function drawArcToForContext (context, offset = {x: 0, y: 0}) {
     const radius = 15
 
     context.save()
