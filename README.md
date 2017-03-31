@@ -5,7 +5,11 @@
 
 Inset shadows for HTML's `<canvas>` element.
 
-Currently supports inset shadows on shapes drawn with `fillRect`, shapes drawn with `drawImage`, or shapes drawn using the path functions (`beginPath`, `moveTo`, `lineTo`, `arc`, `arcTo`, etc.) and then `fill`.
+Trying to draw inset shadows using the HTML Canvas API can be suprisingly difficult, often requires obscure techniques like [duplicating your drawing code](http://stackoverflow.com/a/27892121), [using the `clip` method](https://www.rgraph.net/blog/an-example-of-html5-canvas-shadows.html#inner-shadows), or ["opposite winding"](https://www.html5rocks.com/en/tutorials/canvas/texteffects/#toc-inner-shadow).
+
+In contrast, Inset.js requires only a single line of code, and does not require you to duplicate any code. See the [Inset!](README#usage-inset) section for more details. This is achieved by a combination of an off-screen canvas for some fancy alpha inversion (inspired by [this StackOverflow post](http://stackoverflow.com/a/37380488)), along with [monkey-patching](http://me.dt.in.th/page/JavaScript-override/) a few select CanvasRenderingContext2D methods.
+
+Inset.js currently supports inset shadows on shapes drawn with `fillRect`, shapes drawn with `drawImage`, or shapes drawn using the path functions (`beginPath`, `moveTo`, `lineTo`, `arc`, `arcTo`, etc.) and then `fill`.
 
 ## Usage
 
@@ -34,7 +38,7 @@ If you are not using a build system capable of transpiling ES6 and bundling modu
 <script src="/dist/inset.browser.js"></script>
 ```
 
-### Inset!
+### [Inset!](#usage-inset)
 
 Simply set 
 
