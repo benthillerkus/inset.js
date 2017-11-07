@@ -1,12 +1,12 @@
 {
   "name": "inset.js",
   "description": "Inset shadows for HTML's <canvas> element.",
-  "homepage": "https://patlillis.github.io/inset.js",
+  "homepage": "https://inset.js.org/",
   "main": "dist/inset.js",
   "module": "dist/inset.module.js",
   "jsnext:main": "dist/inset.module.js",
   "browser:main": "dist/inset.browser.js",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "license": "MIT",
   "repository": "patlillis/inset.js",
   "author": {
