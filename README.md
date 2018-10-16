@@ -111,6 +111,6 @@ Test results will be displayed in the terminal.
 
 ## License
 
-[Code licensed MIT](LICENSE). © 2017 Pat Lillis.
+[Code licensed MIT](LICENSE). © 2018 Pat Lillis.
 
 [![Built With Love](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
