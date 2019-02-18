@@ -35,7 +35,7 @@ import 'inset.js'
 
 ### Include
 
-If you are not using a build system capable of transpiling ES6 and bundling modules, you can just inlcude Inset.js directly:
+If you are not using a build system capable of transpiling ES6 and bundling modules, you can just include Inset.js directly:
 
 ```html
 <!-- Include Inset.js -->
