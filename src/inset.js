@@ -168,7 +168,9 @@ const inset = () => {
 }
 
 // Only do initialization once.
-if (typeof CanvasRenderingContext2D.prototype.shadowInset === 'undefined') {
+if (
+  typeof CanvasRenderingContext2D !== 'undefined' &&
+  typeof CanvasRenderingContext2D.prototype.shadowInset === 'undefined') {
   inset()
 }
 
